@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig(() => ({
-  base: "/Personal-Portfolio/", // Your repository name
+  base: "/Personal-Portfolio/", // This is crucial!
   server: {
     host: "::",
     port: 8080,
