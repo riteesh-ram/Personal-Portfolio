@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Portfolio Design System - Dark theme with electric accents */
+
+@layer base {
+  :root {
+    /* Dark theme primary colors */
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+
+    /* Card and surface colors */
+    --card: 223 84% 8%;
+    --card-foreground: 210 40% 98%;
+
+    /* Popover colors */
+    --popover: 223 84% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary electric blue/cyan */
+    --primary: 150 40% 45%;
+    --primary-foreground: 222 84% 5%;
+    --primary-glow: 150 45% 55%;
+
+    /* Secondary purple accent */
+    --secondary: 25 45% 55%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted colors */
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent colors */
+    --accent: 25 35% 25%;
+    --accent-foreground: 222 84% 5%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    /* Border and input */
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 150 40% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom portfolio variables */
+    --hero-gradient: linear-gradient(135deg, hsl(222 84% 5%), hsl(223 84% 8%), hsl(25 35% 15%));
+    --accent-gradient: linear-gradient(135deg, hsl(150 40% 45%), hsl(25 45% 55%));
+    --glass: hsla(210 40% 98% / 0.05);
+    --glass-border: hsla(210 40% 98% / 0.1);
+    
+    /* Animation variables */
+    --animation-duration: 0.3s;
+    --animation-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Shadows with glow effects */
+    --shadow-glow: 0 0 20px hsl(150 40% 45% / 0.3);
+    --shadow-card: 0 8px 32px hsla(222 84% 4% / 0.3);
+    --shadow-intense: 0 0 40px hsl(150 45% 55% / 0.5);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode fallback (portfolio is primarily dark) */
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 222 84% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 5%;
+    --primary: 150 40% 50%;
+    --primary-foreground: 210 40% 98%;
+    --accent: 150 40% 50%;
+    --accent-foreground: 210 40% 98%;
+  }
+}
+
+/* Custom animations for portfolio */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: var(--shadow-glow); }
+  50% { box-shadow: var(--shadow-intense); }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: var(--hero-gradient);
+    min-height: 100vh;
+  }
+
+  /* Smooth scrolling for navigation */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
+}
+
+/* Utility classes for portfolio */
+@layer utilities {
+  .text-gradient {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-effect {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-hover:hover {
+    box-shadow: var(--shadow-intense);
+    transform: translateY(-2px);
+    transition: all var(--animation-duration) var(--animation-bezier);
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out;
+  }
+
+  .animate-slide-left {
+    animation: slide-in-left 0.6s ease-out;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--primary));
+    white-space: nowrap;
+    animation: typewriter 3s steps(40, end), blink-cursor 0.8s infinite;
+  }
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--primary)); }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
