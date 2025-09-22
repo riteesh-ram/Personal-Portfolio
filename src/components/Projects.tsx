@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { 
+  Github, 
+  ChevronLeft, 
+  ChevronRight, 
+  Code2, 
+  Zap, 
+  Star
+} from "lucide-react";
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const projects = [
+ const projects = [
     {
       title: "AI-Driven Automated Test Generation System",
       description: "Developed LLM TestGen, an AI-driven testing solution that automates Python test generation, improving software reliability and cutting debugging time. Built to be scalable and resilient, it transforms testing into a faster, smarter, and more efficient process.",
@@ -139,6 +149,16 @@ const Projects = () => {
     }
   ];
 
+  // Auto-play functionality
+  useEffect(() => {
+    if (isAutoPlay && !isHovered) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % projects.length);
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [isAutoPlay, isHovered, projects.length]);
+
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
   };
@@ -151,151 +171,381 @@ const Projects = () => {
     setCurrentIndex(index);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   return (
-    <section id="projects" className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+    <section
+      id="projects"
+      className="py-20 relative overflow-hidden min-h-screen"
+      style={{
+        backgroundColor: 'black',
+      }}
+    >
+      {/* Enhanced Background Elements */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-3xl opacity-40 animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/8 rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-6"
+            initial={{ scale: 0.9 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             Featured <span className="text-gradient">Projects</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             A showcase of impactful projects that highlight my technical expertise, innovative mindset, and ability to solve complex problems across diverse technologies.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Projects Carousel */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Navigation Buttons */}
-          <Button
-            variant="outline"
-            size="sm"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 glass-effect glow-hover"
-            onClick={prevProject}
+        <motion.div 
+          className="relative max-w-6xl mx-auto"
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {/* Enhanced Navigation Buttons */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
           >
-            <ChevronLeft className="w-4 h-4" />
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 glass-effect glow-hover"
-            onClick={nextProject}
+            <Button
+              variant="outline"
+              size="sm"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 glass-effect glow-hover border-2 border-primary/30 hover:border-primary/50 transition-all duration-300"
+              onClick={prevProject}
+              whileHover={{ scale: 1.1, x: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
           >
-            <ChevronRight className="w-4 h-4" />
-          </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 glass-effect glow-hover border-2 border-primary/30 hover:border-primary/50 transition-all duration-300"
+              onClick={nextProject}
+              whileHover={{ scale: 1.1, x: 2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
+          </motion.div>
 
           {/* Project Cards */}
-          <div className="overflow-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {projects.map((project, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-8">
-                  <Card className="glass-effect glow-hover overflow-hidden animate-fade-up">
-                    {/* Project Visual */}
-                    <div className="relative h-64 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/30">
+          <div className="overflow-hidden rounded-2xl">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                className="w-full"
+                initial={{ opacity: 0, x: 100, scale: 0.95 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -100, scale: 0.95 }}
+                transition={{ 
+                  duration: 0.6,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
+              >
+                <div className="px-8">
+                  <Card className="glass-effect glow-hover overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-all duration-500 relative">
+                    {/* Enhanced Project Visual */}
+                    <motion.div 
+                      className="relative h-64 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/30 overflow-hidden"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                      
+                      {/* Category Badge */}
+                      <motion.div
+                        className="absolute top-4 left-4 z-10"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <Badge className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm">
+                          {projects[currentIndex].category}
+                        </Badge>
+                      </motion.div>
+
+                      {/* Main Content */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center">
-                          <div className="text-6xl mb-4">💻</div>
-                          <h3 className="text-2xl font-bold text-primary">{project.title}</h3>
-                        </div>
+                        <motion.div 
+                          className="text-center"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <div className="text-6xl mb-4">
+                            {projects[currentIndex].icon}
+                          </div>
+                          <h3 className="text-2xl font-bold text-primary mb-2">
+                            {projects[currentIndex].title}
+                          </h3>
+                        </motion.div>
                       </div>
                       
-                      {/* Floating elements */}
-                      <div className="absolute top-6 left-6 w-12 h-12 bg-primary/20 rounded-full animate-bounce"></div>
-                      <div className="absolute bottom-6 right-6 w-8 h-8 bg-secondary/30 rounded-full animate-pulse"></div>
-                      <div className="absolute top-1/2 right-12 w-6 h-6 bg-primary/40 rounded-full animate-ping"></div>
-                    </div>
+                      {/* Enhanced Floating elements */}
+                      <motion.div 
+                        className="absolute top-6 left-6 w-12 h-12 bg-primary/20 rounded-full"
+                        animate={{ 
+                          y: [0, -10, 0],
+                          opacity: [0.3, 0.6, 0.3]
+                        }}
+                        transition={{ 
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                      <motion.div 
+                        className="absolute bottom-6 right-6 w-8 h-8 bg-secondary/30 rounded-full"
+                        animate={{ 
+                          scale: [1, 1.2, 1],
+                          opacity: [0.4, 0.8, 0.4]
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: 0.5
+                        }}
+                      />
+                      <motion.div 
+                        className="absolute top-1/2 right-12 w-6 h-6 bg-primary/40 rounded-full"
+                        animate={{ 
+                          scale: [0, 1, 0],
+                          opacity: [0, 1, 0]
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: 1
+                        }}
+                      />
+                    </motion.div>
 
                     <CardContent className="p-8">
-                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                      <p className="text-muted-foreground mb-6 text-lg leading-relaxed">{project.description}</p>
+                      <motion.h3 
+                        className="text-2xl font-bold mb-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                      >
+                        {projects[currentIndex].title}
+                      </motion.h3>
+                      
+                      <motion.p 
+                        className="text-muted-foreground mb-6 text-lg leading-relaxed"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                      >
+                        {projects[currentIndex].description}
+                      </motion.p>
 
-                      {/* Key Features */}
-                      <div className="mb-6">
-                        <h4 className="text-lg font-semibold mb-3 text-primary">Key Features</h4>
+                      {/* Enhanced Key Features */}
+                      <motion.div 
+                        className="mb-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                      >
+                        <div className="flex items-center gap-2 mb-4">
+                          <Zap className="w-5 h-5 text-primary" />
+                          <h4 className="text-lg font-semibold text-primary">Key Features</h4>
+                        </div>
                         <div className="grid md:grid-cols-2 gap-3">
-                          {project.features.map((feature, featureIndex) => (
-                            <div key={featureIndex} className="flex items-center gap-3">
-                              <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                              <span className="text-sm font-medium">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Technologies */}
-                      <div className="mb-8">
-                        <h4 className="text-lg font-semibold mb-3">Technologies Used</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech, techIndex) => (
-                            <Badge 
-                              key={techIndex}
-                              variant="outline" 
-                              className="px-3 py-1 glow-hover"
+                          {projects[currentIndex].features.map((feature, featureIndex) => (
+                            <motion.div 
+                              key={featureIndex} 
+                              className="flex items-start gap-3 p-2 rounded-lg hover:bg-primary/5 transition-colors duration-200"
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.7 + (featureIndex * 0.05) }}
+                              whileHover={{ scale: 1.02, x: 5 }}
                             >
-                              {tech}
-                            </Badge>
+                              <Star className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                              <span className="text-sm font-medium leading-relaxed">{feature}</span>
+                            </motion.div>
                           ))}
                         </div>
-                      </div>
+                      </motion.div>
 
-                      {/* Action Button */}
-                      <div className="flex justify-center">
+                      {/* Enhanced Technologies */}
+                      <motion.div 
+                        className="mb-8"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                      >
+                        <div className="flex items-center gap-2 mb-4">
+                          <Code2 className="w-5 h-5 text-primary" />
+                          <h4 className="text-lg font-semibold text-primary">Technologies Used</h4>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {projects[currentIndex].technologies.map((tech, techIndex) => (
+                            <motion.div
+                              key={techIndex}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: 0.9 + (techIndex * 0.03) }}
+                              whileHover={{ scale: 1.05, y: -2 }}
+                            >
+                              <Badge 
+                                variant="outline" 
+                                className="px-3 py-1 glow-hover hover:bg-primary/10 hover:border-primary/50 transition-all duration-200 cursor-default"
+                              >
+                                {tech}
+                              </Badge>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+
+                      {/* Enhanced Action Button */}
+                      <motion.div 
+                        className="flex justify-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1 }}
+                      >
                         <Button 
                           variant="outline" 
                           size="lg"
-                          className="glass-effect glow-hover"
-                          onClick={() => window.open(project.githubUrl, '_blank')}
+                          className="glass-effect glow-hover border-2 border-primary/30 hover:border-primary/50 transition-all duration-300"
+                          onClick={() => window.open(projects[currentIndex].githubUrl, '_blank')}
+                          whileHover={{ scale: 1.05, y: -2 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           <Github className="w-5 h-5 mr-3" />
                           View Code
                         </Button>
-                      </div>
+                      </motion.div>
                     </CardContent>
                   </Card>
                 </div>
-              ))}
-            </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 gap-2">
+          {/* Enhanced Dots Indicator */}
+          <motion.div 
+            className="flex justify-center mt-8 gap-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+          >
             {projects.map((_, index) => (
-              <button
+              <motion.button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'bg-primary' 
+                    ? 'bg-primary w-8' 
                     : 'bg-primary/30 hover:bg-primary/50'
                 }`}
                 onClick={() => goToProject(index)}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                layoutId={index === currentIndex ? "activeIndicator" : undefined}
               />
             ))}
-          </div>
+          </motion.div>
 
-          {/* Progress Bar */}
-          <div className="mt-4 bg-primary/20 rounded-full h-1 overflow-hidden">
-            <div 
-              className="bg-primary h-full transition-all duration-500 ease-in-out"
-              style={{ width: `${((currentIndex + 1) / projects.length) * 100}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16 animate-fade-up">
-          <p className="text-muted-foreground mb-6 text-lg">
-            Want to see more of my work or discuss a potential collaboration?
-          </p>
-          <Button 
-            size="lg" 
-            className="glow-hover animate-glow"
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+          {/* Enhanced Progress Bar */}
+          <motion.div 
+            className="mt-6 bg-primary/20 rounded-full h-2 overflow-hidden relative"
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ delay: 0.8 }}
           >
-            Get In Touch
-          </Button>
-        </div>
+            <motion.div 
+              className="bg-gradient-to-r from-primary to-secondary h-full rounded-full relative overflow-hidden"
+              style={{ width: `${((currentIndex + 1) / projects.length) * 100}%` }}
+              layoutId="progressBar"
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+            </motion.div>
+          </motion.div>
+
+          {/* Project Counter */}
+          <motion.div 
+            className="text-center mt-4 text-muted-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 }}
+          >
+            <span className="text-primary font-semibold">{currentIndex + 1}</span> of {projects.length} projects
+          </motion.div>
+        </motion.div>
+
+        {/* Enhanced Call to Action */}
+        <motion.div 
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.p 
+            className="text-muted-foreground mb-6 text-lg"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            Want to see more of my work or discuss a potential collaboration?
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <Button 
+              size="lg" 
+              className="glow-hover animate-glow bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get In Touch
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

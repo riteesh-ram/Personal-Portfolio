@@ -1,6 +1,6 @@
 // src/components/Skills.tsx
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaJava, FaPython, FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaHtml5, FaCss3, FaLinux
 } from 'react-icons/fa';
@@ -13,7 +13,7 @@ import {
 import {
   Server, Database, CloudCog, BrainCircuit, Bot, Code2, Cpu, MessageSquare, Briefcase,
   Network, ShieldCheck, HardDrive, TestTube2, Recycle, BarChart3, Puzzle, Brain, BookOpen, 
-  Lightbulb, Wifi, Library, Users, Activity
+  Lightbulb, Wifi, Library, Users, Activity, MousePointer
 } from 'lucide-react';
 
 const skillCategories = [
@@ -105,21 +105,9 @@ const skillCategories = [
   },
 ];
 
-const SkillCard = ({ category }) => {
+const SkillCard = ({ category, index }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.4, 0, 0.2, 1],
-      },
-    },
-  };
 
   const handleMouseEnter = () => {
     if (!isHovering) {
@@ -136,14 +124,15 @@ const SkillCard = ({ category }) => {
   const cardBaseStyle = {
     backgroundColor: '#1e293b',
     border: '1px solid #334155',
-    borderRadius: '12px',
-    transition: 'all 0.3s ease',
+    borderRadius: '16px',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    cursor: 'pointer',
   };
 
   const cardHoverStyle = isHovering ? {
     borderColor: '#10b981',
-    boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)',
-    transform: 'translateY(-4px)',
+    boxShadow: '0 20px 40px rgba(16, 185, 129, 0.2), 0 0 30px rgba(16, 185, 129, 0.1)',
+    transform: 'translateY(-8px) scale(1.02)',
   } : {};
 
   if (!category || !category.skills) {
@@ -152,14 +141,19 @@ const SkillCard = ({ category }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-      className="relative w-full h-[320px]"
+      initial={{ opacity: 0, y: 60, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.1,
+        ease: [0.4, 0, 0.2, 1] 
+      }}
+      className="relative w-full h-[320px] group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ perspective: '1000px' }}
+      style={{ perspective: '1200px' }}
     >
+      {/* Flip Animation Container */}
       <div
         className="relative w-full h-full transition-transform duration-700 ease-in-out"
         style={{
@@ -167,9 +161,9 @@ const SkillCard = ({ category }) => {
           transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
         }}
       >
-        {/* Front */}
+        {/* Front Side */}
         <div
-          className="absolute inset-0 w-full h-full p-6 flex items-center justify-center flex-col"
+          className="absolute inset-0 w-full h-full p-8 flex items-center justify-center flex-col"
           style={{
             ...cardBaseStyle,
             ...cardHoverStyle,
@@ -177,13 +171,46 @@ const SkillCard = ({ category }) => {
             WebkitBackfaceVisibility: 'hidden',
           }}
         >
-          <div className="text-emerald-400 w-12 h-12 mb-4">
-            {category.icon && React.cloneElement(category.icon, { size: '3rem' })}
-          </div>
-          <h3 className="text-2xl font-bold text-center text-white">{category.name}</h3>
+          {/* Floating Icon Animation */}
+          <motion.div 
+            className="text-emerald-400 w-16 h-16 mb-6 relative"
+            animate={isHovering ? { 
+              scale: [1, 1.1, 1], 
+              rotate: [0, 5, -5, 0] 
+            } : { 
+              y: [0, -4, 0] 
+            }}
+            transition={{
+              duration: isHovering ? 0.6 : 2,
+              repeat: isHovering ? 0 : Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            {category.icon && React.cloneElement(category.icon, { size: '4rem' })}
+            
+            {/* Sparkle Effects */}
+            {isHovering && (
+              <>
+                <motion.div
+                  className="absolute -top-2 -right-2 w-2 h-2 bg-yellow-400 rounded-full"
+                  animate={{ scale: [0, 1, 0], rotate: 360 }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                />
+                <motion.div
+                  className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-blue-400 rounded-full"
+                  animate={{ scale: [0, 1, 0] }}
+                  transition={{ duration: 1, repeat: Infinity, delay: 0.3 }}
+                />
+              </>
+            )}
+          </motion.div>
+
+          <h3 className="text-2xl font-bold text-center text-white mb-4">
+            {category.name}
+          </h3>
         </div>
 
-        {/* Back */}
+        {/* Back Side */}
         <div
           className="absolute inset-0 w-full h-full p-6"
           style={{
@@ -194,12 +221,27 @@ const SkillCard = ({ category }) => {
             transform: 'rotateY(180deg)',
           }}
         >
-          <h3 className="text-xl font-bold mb-4 text-center text-white">{category.name}</h3>
-          <div className="flex flex-wrap gap-3 justify-center overflow-y-auto h-[calc(100%-3rem)] max-h-[240px]">
-            {category.skills && category.skills.map((skill, index) => (
-              <div
-                key={`${skill.name}-${index}`}
-                className="flex items-center gap-2 p-2 rounded-lg text-sm h-fit"
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="text-emerald-400 w-6 h-6">
+              {category.icon && React.cloneElement(category.icon, { size: '1.5rem' })}
+            </div>
+            <h3 className="text-xl font-bold text-center text-white">
+              {category.name}
+            </h3>
+          </div>
+          
+          <div className="flex flex-wrap gap-3 justify-center overflow-y-auto h-[calc(100%-4rem)] max-h-[240px] custom-scrollbar">
+            {category.skills && category.skills.map((skill, skillIndex) => (
+              <motion.div
+                key={`${skill.name}-${skillIndex}`}
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.3, 
+                  delay: skillIndex * 0.05,
+                  ease: "easeOut"
+                }}
+                className="flex items-center gap-2 p-2.5 rounded-lg text-sm h-fit hover:scale-105 transition-transform duration-200"
                 style={{
                   backgroundColor: 'rgba(16, 185, 129, 0.15)',
                   border: '1px solid rgba(16, 185, 129, 0.3)',
@@ -211,11 +253,22 @@ const SkillCard = ({ category }) => {
                 <span className="font-medium whitespace-nowrap text-gray-200">
                   {skill.name || 'Unknown Skill'}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Glow Effect */}
+      <div 
+        className={`absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-500 -z-10 ${
+          isHovering ? 'opacity-20' : 'opacity-0'
+        }`}
+        style={{
+          background: 'radial-gradient(circle at center, rgba(16, 185, 129, 0.3) 0%, transparent 70%)',
+          filter: 'blur(20px)',
+        }}
+      />
     </motion.div>
   );
 };
@@ -225,16 +278,9 @@ const Skills = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.1,
       },
     },
-  };
-
-  const gradientText = {
-    background: 'linear-gradient(135deg, #10b981, #34d399)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
   };
 
   return (
@@ -242,18 +288,43 @@ const Skills = () => {
       id="skills" 
       className="py-20 relative overflow-hidden min-h-screen"
       style={{
-        backgroundColor: '#0f172a',
-        backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(52, 211, 153, 0.1) 0%, transparent 50%)',
+        backgroundColor: 'black',
       }}
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+          >
             Technical <span className="text-gradient">Skills</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
+          >
             A comprehensive overview of my technical expertise across various domains of software development.
-          </p>
+          </motion.p>
+          
+          {/* Single Interactive Hint - Clean UX */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex items-center justify-center gap-3 text-emerald-400 text-lg font-medium"
+          >
+            <motion.div
+              animate={{ x: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <MousePointer size={20} />
+            </motion.div>
+            <span>Hover over cards to explore skills</span>
+          </motion.div>
         </div>
 
         <motion.div
@@ -264,10 +335,26 @@ const Skills = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {skillCategories.map((category, index) => (
-            <SkillCard key={`${category.name}-${index}`} category={category} />
+            <SkillCard 
+              key={`${category.name}-${index}`} 
+              category={category} 
+              index={index}
+            />
           ))}
         </motion.div>
       </div>
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .custom-scrollbar {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+      `}</style>
     </section>
   );
 };

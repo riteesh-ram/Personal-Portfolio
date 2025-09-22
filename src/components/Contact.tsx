@@ -60,7 +60,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative">
+  <section id="contact" className="py-20 relative" style={{ backgroundColor: 'black' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -108,7 +108,11 @@ const Contact = () => {
                       className="bg-background/50 border-border/50 min-h-24"
                       required
                     />
-                    <Button type="submit" className="w-full glow-hover" disabled={isSubmitting}>
+                    <Button
+                      type="submit"
+                      className="w-full glow-hover animate-glow bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
+                      disabled={isSubmitting}
+                    >
                       <Send className="w-4 h-4 mr-2" />
                       {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>

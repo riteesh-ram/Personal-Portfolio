@@ -1,3 +1,4 @@
+
 // src/components/Achievements.tsx
 
 import React from 'react';
@@ -195,7 +196,7 @@ const Achievements = () => {
               {achievements.map((achievement, index) => (
                 <SwiperSlide key={index}>
                   <Card className="glass-effect glow-hover group h-full">
-                    <CardContent className="p-6 flex flex-col h-full">
+                    <CardContent className="p-6 flex flex-col h-full" style={{ backgroundColor: '#1e293b', borderRadius: '0.75rem' }}>
                       <div className={`relative mb-4 w-16 h-16 bg-gradient-to-br ${achievement.color} rounded-full flex items-center justify-center`}>
                         <achievement.icon className="w-8 h-8 text-white" />
                       </div>

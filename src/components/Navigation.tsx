@@ -107,20 +107,20 @@ const Navigation = () => {
         }`}
       >
         <button
-          onClick={scrollToTop}
-          className="group relative w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:scale-110 hover:-translate-y-1"
-          aria-label="Scroll to top"
+         onClick={scrollToTop}
+         className="group relative w-14 h-14 bg-emerald-500/80 backdrop-blur-md border border-emerald-400/60 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-emerald-500 hover:border-emerald-400 hover:scale-110 hover:-translate-y-1"
+         aria-label="Scroll to top"
         >
           {/* Glow effect on hover */}
-          <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 rounded-full bg-emerald-400/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           
           {/* Button content */}
           <div className="relative z-10 flex items-center justify-center w-full h-full">
-            <ArrowUp className="w-6 h-6 text-white/80 group-hover:text-white transition-colors duration-300" />
+            <ArrowUp className="w-6 h-6 text-white group-hover:text-emerald-100 transition-colors duration-300" />
           </div>
           
           {/* Ripple effect */}
-          <div className="absolute inset-0 rounded-full border-2 border-white/30 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"></div>
+          <div className="absolute inset-0 rounded-full border-2 border-emerald-300 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"></div>
         </button>
       </div>
     </>

@@ -146,32 +146,32 @@
     @apply bg-background text-foreground antialiased;
     background: var(--hero-gradient);
     min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
   }
 
-  /* Smooth scrolling for navigation */
+  /* Remove smooth scrolling for navigation */
   html {
-    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
   }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
+  /* Hide scrollbars */
+  body::-webkit-scrollbar {
+    display: none;
   }
-
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
+  
+  html::-webkit-scrollbar {
+    display: none;
   }
-
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary));
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary-glow));
+  
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 }
 
+/* Utility classes for portfolio */
 /* Utility classes for portfolio */
 @layer utilities {
   .text-gradient {
