@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Award, Medal, Users, BookOpen, Code, Zap, ChevronLeft, ChevronRight, GraduationCap } from "lucide-react";
 
-// Import Swiper components and modules
+// Import Swiper components & modules
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 
