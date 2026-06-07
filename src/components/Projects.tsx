@@ -19,13 +19,55 @@ const Projects = () => {
 
  const projects = [
     {
+      title: "EuroComply - GDPR & EU AI Act Compliance Assistant",
+      description: "EuroComply is a production-grade RAG system for querying GDPR and EU AI Act source material in natural language, delivering fast, grounded answers for compliance, legal, and security teams. It combines hybrid semantic and keyword retrieval with Cohere reranking and Groq-powered generation, scoring every response for relevance and faithfulness.",
+      technologies: ["Python", "RAG", "ChromaDB", "Groq", "Cohere", "Streamlit", "FastAPI", "Docker", "Hugging Face Spaces", "BM25", "SentenceTransformers", "LLMs", "Generative AI"],
+      features: [
+        "Hybrid semantic and BM25 retrieval with Cohere reranking",
+        "Multi-query RAG with 5 parallel sub-queries for complex questions",
+        "Automatic GDPR vs EU AI Act routing at retrieval time",
+        "LLM-scored relevance and faithfulness displayed per response",
+        "Build-time ChromaDB ingestion for zero cold-start latency",
+        "Dual LLM modes balancing quality and token efficiency"
+      ],
+      githubUrl: "#"
+    },
+    {
+      title: "TaskFlow - Kanban Project Management",
+      description: "TaskFlow is a real-time kanban workspace built on React and Supabase, enabling teams to collaborate seamlessly through drag-and-drop boards, presence indicators, and sub-100ms optimistic updates. It delivers Jira-style extensibility with rich cards, audit-grade tracking, and zero-trust access control, all without a custom backend.",
+      technologies: ["React 18", "TypeScript", "Vite", "Supabase", "PostgreSQL", "Tailwind CSS", "shadcn/ui", "dnd-kit", "TanStack Query", "Realtime", "Row-Level Security", "JSONB", "Vercel"],
+      features: [
+        "Real-time board collaboration with presence and card lock awareness",
+        "Optimistic drag-and-drop with automatic rollback on failure",
+        "Audit-grade mutation logging with instant user notifications",
+        "Rich cards with priorities, story points, due dates, and sprint linkage",
+        "Zero-trust row-level security across all board operations",
+        "Jira-style WIP limits, swimlanes, and quick filters"
+      ],
+      githubUrl: "#"
+    },
+    {
+      title: "BudgetWise - Smart Budgeting Web App",
+      description: "BudgetWise is a full-stack personal finance application built on React and Spring Boot, empowering users to track income, expenses, and categories through visual charts and a clean, intuitive dashboard. It delivers secure JWT-based authentication, Excel report generation, and email delivery, all deployed on a production-grade containerised architecture.",
+      technologies: ["React 18", "Vite", "Tailwind CSS", "Spring Boot", "Java", "JWT", "PostgreSQL", "Docker", "Cloudinary", "Apache POI", "REST APIs", "Vercel", "Render"],
+      features: [
+        "Secure JWT authentication with BCrypt-encrypted accounts",
+        "Track income and expenses by customisable categories",
+        "Visual pie and line charts for spending pattern analysis",
+        "Filter transactions by keyword, date range, and category",
+        "Download or email expense reports as Excel files",
+        "Profile management with Cloudinary avatar uploads"
+      ],
+      githubUrl: "#"
+    },
+    {
       title: "AI-Driven Automated Test Generation System",
       description: "Developed LLM TestGen, an AI-driven testing solution that automates Python test generation, improving software reliability and cutting debugging time. Built to be scalable and resilient, it transforms testing into a faster, smarter, and more efficient process.",
       technologies: ["Python", "Generative AI", "Agentic AI", "Google Gemini", "Pytest", "Evolutionary Algorithms", "Mutation Testing", "AST", "Code Analysis", "Pynguin Testing Tool", "CSV", "JSON", "HTML"],
       features: [
         "Automatically generates high-quality, context-aware Python test suites.",
-        "Optimises test coverage and effectiveness using evolutionary algorithms.", 
-        "Validates test robustness with mutation testing and targeted “killer” tests.",
+        "Optimises test coverage and effectiveness using evolutionary algorithms.",
+        "Validates test robustness with mutation testing and targeted \"killer\" tests.",
         "Repairs and standardises broken or failing tests automatically.",
         "Provides detailed test reports and metrics for actionable insights.",
         "Seamlessly manages multi-environment pipeline execution for reliability."
@@ -89,7 +131,7 @@ const Projects = () => {
       technologies: ["Java", "Android Studio", "Android SDK", "UI/UX", "Firebase Cloud Services", "Firebase Authentication", "Firebase Firestore", "Gradle", "XML"],
       features: [
         "Secure and seamless user login",
-        "Real-time profile management with cloud sync", 
+        "Real-time profile management with cloud sync",
         "Effortless product posting and tracking",
         "Comprehensive state-wise market price lookup",
         "Instant access to local representatives",
@@ -103,7 +145,7 @@ const Projects = () => {
       technologies: ["Python", "Flask", "TensorFlow", "Natural Language Processing", "Deep Learning", "Neural Networks", "Twilio API", "SQLite database", "Heroku Cloud", "Git"],
       features: [
         "Intelligently automates customer interactions",
-        "Seamlessly handles product orders", 
+        "Seamlessly handles product orders",
         "Securely logs conversations for insights",
         "Delivers instant AI-powered responses"
       ],
@@ -115,53 +157,11 @@ const Projects = () => {
       technologies: ["Angular", "TypeScript", "Python", "FastAPI", "Machine Learning", "MongoDB", "API"],
       features: [
         "Predict H1N1 and flu uptake",
-        "Real-time batch and individual analysis", 
+        "Real-time batch and individual analysis",
         "Interactive dashboard with insights",
         "Automated intelligent data preprocessing"
       ],
       githubUrl: "https://github.com/riteesh-ram/FluShot-H1N1-Seasonal-Vaccine-Prediction"
-    },
-    {
-      title: "TaskFlow - Kanban Project Management",
-      description: "TaskFlow is a real-time kanban workspace built on React and Supabase, enabling teams to collaborate seamlessly through drag-and-drop boards, presence indicators, and sub-100ms optimistic updates. It delivers Jira-style extensibility with rich cards, audit-grade tracking, and zero-trust access control, all without a custom backend.",
-      technologies: ["React 18", "TypeScript", "Vite", "Supabase", "PostgreSQL", "Tailwind CSS", "shadcn/ui", "dnd-kit", "TanStack Query", "Realtime", "Row-Level Security", "JSONB", "Vercel"],
-      features: [
-        "Real-time board collaboration with presence indicators and card lock awareness",
-        "Optimistic drag-and-drop cards and lanes with automatic rollback on failure",
-        "Audit-grade logging for every card mutation with instant user notifications",
-        "Rich cards with labels, priorities, story points, due dates, and sprint linkage",
-        "Zero-trust row-level security enforcing access across all board operations",
-        "Jira-style board settings including WIP limits, swimlanes, and quick filters"
-      ],
-      githubUrl: "#"
-    },
-    {
-      title: "BudgetWise - Smart Budgeting Web App",
-      description: "BudgetWise is a full-stack personal finance application built on React and Spring Boot, empowering users to track income, expenses, and categories through visual charts and a clean, intuitive dashboard. It delivers secure JWT-based authentication, Excel report generation, and email delivery, all deployed on a production-grade containerised architecture.",
-      technologies: ["React 18", "Vite", "Tailwind CSS", "Spring Boot", "Java", "JWT", "PostgreSQL", "Docker", "Cloudinary", "Apache POI", "REST APIs", "Vercel", "Render"],
-      features: [
-        "Secure JWT authentication with BCrypt-encrypted user accounts",
-        "Track income and expenses organised by fully customisable categories",
-        "Visual pie and line charts for spending and income pattern analysis",
-        "Filter and search transactions by keyword, date range, category, and sort order",
-        "Download or email income and expense reports as Excel files",
-        "Profile management with custom avatar uploads via Cloudinary"
-      ],
-      githubUrl: "#"
-    },
-    {
-      title: "EuroComply - GDPR & EU AI Act Compliance Assistant",
-      description: "EuroComply is a production-grade RAG system for querying GDPR and EU AI Act source material in natural language, delivering fast, grounded answers for compliance, legal, and security teams. It combines hybrid semantic and keyword retrieval with Cohere reranking and Groq-powered generation, scoring every response for relevance and faithfulness.",
-      technologies: ["Python", "RAG", "ChromaDB", "Groq", "Cohere", "Streamlit", "FastAPI", "Docker", "Hugging Face Spaces", "BM25", "SentenceTransformers", "LLMs", "Generative AI"],
-      features: [
-        "Hybrid RAG combining semantic search and BM25 with Cohere reranking for precise article retrieval",
-        "Advanced multi-query RAG generating 5 parallel sub-queries for complex regulatory questions",
-        "Automatic GDPR vs EU AI Act metadata detection to filter and route queries at retrieval time",
-        "LLM-scored relevance and faithfulness evaluation displayed per response",
-        "Build-time ChromaDB ingestion ensuring zero cold-start latency on deployment",
-        "Dual LLM modes balancing response quality and token efficiency via Groq-hosted models"
-      ],
-      githubUrl: "#"
     }
   ];
 
@@ -307,29 +307,14 @@ const Projects = () => {
                       {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                       
-                      {/* Category Badge */}
-                      <motion.div
-                        className="absolute top-4 left-4 z-10"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <Badge className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm">
-                          {projects[currentIndex].category}
-                        </Badge>
-                      </motion.div>
-
                       {/* Main Content */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div 
+                        <motion.div
                           className="text-center"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
                         >
-                          <div className="text-6xl mb-4">
-                            {projects[currentIndex].icon}
-                          </div>
                           <h3 className="text-2xl font-bold text-primary mb-2">
                             {projects[currentIndex].title}
                           </h3>

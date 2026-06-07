@@ -19,7 +19,7 @@ const experiences = [
   {
     title: "Junior Full Stack Developer",
     company: "Pod Digital Marketing",
-    companyUrl: "#",
+    companyUrl: "https://www.poddigital.co.uk/",
     location: "On-site, United Kingdom",
     period: "Mar 2026 - May 2026",
     type: "Full-time",
