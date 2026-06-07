@@ -4,8 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Link as LinkIcon, 
-  Star, 
+  Link as LinkIcon,
   ChevronRight, 
   MapPin, 
   Calendar, 
@@ -18,18 +17,33 @@ import {
 
 const experiences = [
   {
-    title: "Software Developer Intern",
+    title: "Junior Full Stack Developer",
+    company: "Pod Digital Marketing",
+    companyUrl: "#",
+    location: "On-site, United Kingdom",
+    period: "Mar 2026 - May 2026",
+    type: "Full-time",
+    description: "Pod Digital Marketing is a UK-based digital marketing agency delivering data-driven growth strategies and AI-powered solutions for businesses across diverse industries.",
+    achievements: [
+      "Built a multi-platform CRM integration layer for TelephoneAI, connecting Salesforce, GoldMine, and Clinic Software while developing deep expertise in ElevenLabs voice AI.",
+      "Owned the data architecture and access control for the BusinessGPT MVP, delivering an MCP-based Microsoft Teams integration that unified emails, documents, and channels into a single application."
+    ],
+    technologies: ["Next.js", "FastAPI", "Python", "MCP", "AI Agents", "Microsoft Teams", "M365", "Salesforce", "ElevenLabs", "CRM Integration", "AI/ML", "REST APIs"]
+  },
+  {
+    title: "Software Developer",
     company: "Little Birdie",
     companyUrl: "https://www.littlebirdie.co.uk/",
     location: "Remote, United Kingdom",
-    period: "Jul 2025 - Present",
-    type: "Part-time",
+    period: "Jul 2025 - Feb 2026",
+    type: "Full-time",
     description: "Little Birdie is a UK fintech platform that helps consumers save on subscriptions and empowers businesses to boost engagement through smart payment management.",
     achievements: [
-      "Built ‘Smart Suggest’, an API-driven recommendation engine providing personalised, cost-saving subscription options and increasing user engagement.",
-      "Led UI/UX enhancements, marketing automation, and push notifications, boosting user engagement and retention by 30%."
+      "Led a critical React Native upgrade to version 0.83, enabling Hermes and Fabric rendering to cut app load times by 35% and directly improve user onboarding retention.",
+      "Architected Little Birdie’s B2B web MVP using Next.js, translating the full mobile product into a scalable web platform for enterprise business clients.",
+      "Built an event-driven recommendation engine on AWS, harnessing personalised user data to drive a 20% boost in user engagement."
     ],
-    technologies: ["React Native", "TypeScript", "JavaScript", "AWS Services", "Server-less Architecture", "GraphQL", "Firebase", "iOS", "Agile", "AI/ML", "CI/CD", "Docker", "Kubernetes", "Attlassian Suite"]
+    technologies: ["React Native", "Next.js", "TypeScript", "JavaScript", "AWS Services", "Server-less Architecture", "GraphQL", "Firebase", "Agile", "AI/ML", "CI/CD", "Docker", "Kubernetes", "Attlassian Suite"]
   },
   {
     title: "Software Engineer",
@@ -40,15 +54,14 @@ const experiences = [
     type: "Full-time",
     description: "Contributed to Hughes Systique Corporation’s JUPITER™ System, a flagship satellite internet platform delivering high-performance, scalable connectivity solutions globally.",
     achievements: [
-      "Streamlined transaction logging for 7+ microservices and 3 legacy systems with BigQuery, cutting debugging time by 60%.",
-      "Developed a Spring microservice with API integration, enabling multi-SIM LTE support.",
-      "Migrated 100+ database tables and procedures from Oracle to PostgreSQL, enhancing reliability and stability.",
-      "Redesigned UI/UX and managed access tokens, boosting system speed by 20%.",
-      "Implemented Node.js monitors with scheduled retries, improving automated request processing.",
-      "Executed unit, integration, and API testing via CI/CD pipelines, delivering bug-free releases.",
-      "Resolved critical production issues, reducing downtime by 40% and strengthening platform stability."
+      "Directed a full Oracle-to-PostgreSQL database migration, rewriting 100+ stored procedures to boost query performance by 20% and reduce licensing costs by 80%.",
+      "Rearchitected a legacy JBoss monolith into a Spring Boot and Kafka microservices ecosystem, cutting deployment overhead by 30% and building a resilient, scalable platform foundation.",
+      "Designed a centralised transaction auditing system across 7+ microservices and 3 legacy systems with BigQuery, reducing root cause resolution time by 60%.",
+      "Shipped production-grade LTE services under high-traffic conditions, applying non-blocking patterns and fault-tolerance strategies to maintain consistent platform reliability.",
+      "Mentored new joiners through technical onboarding and led code reviews that consistently raised the quality bar across the engineering team.",
+      "Championed unit and integration testing across the codebase while embedding DevSecOps practices, delivering consistently secure and stable production releases."
     ],
-    technologies: ["Java", "JavaScript", "SpringBoot", "Node.js", "Angular", "PostgreSQL", "Oracle", "MongoDB", "Google Cloud Platform", "Web APIs", "REST", "Jest", "Junit", "Agile", "CI/CD", "Docker", "Kubernetes", "Attlassian Suite"]
+    technologies: ["Java", "JavaScript", "SpringBoot", "Node.js", "Angular", "PostgreSQL", "Oracle", "MongoDB", "Google Cloud Platform", "Kafka", "Web APIs", "REST", "Jest", "Junit", "Agile", "CI/CD", "Docker", "Kubernetes", "Attlassian Suite"]
   },
   {
     title: "Graduate Trainee Engineer",
@@ -74,7 +87,8 @@ const experiences = [
     type: "Internship",
     description: "Rannlab Technologies delivers custom software, web/mobile apps, and AI- and Blockchain-powered solutions to drive digital transformation and business growth.",
     achievements: [
-      "Developed a WhatsApp chatbot with a deep learning model, achieving 90% intent recognition and reducing customer response time by 40%."
+      "Designed and delivered a WhatsApp chatbot powered by a neural network intent classifier, achieving 90% intent recognition and automating customer queries and ordering workflows.",
+      "Established a centralised database architecture for the conversational agent, providing full visibility into every customer interaction across the platform."
     ],
     technologies: ["Python", "Flask", "SQLite", "Deep Learning", "Natural Language Processing", "Machine Learning"]
   }
@@ -101,7 +115,7 @@ const Experience = () => {
       x: 0,
       transition: {
         duration: 0.5,
-        ease: [0.4, 0, 0.2, 1],
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
       },
     },
   };

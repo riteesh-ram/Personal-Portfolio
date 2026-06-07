@@ -3,7 +3,10 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig(() => ({
-  base: "/Personal-Portfolio/", // This is crucial!
+  base: "/Personal-Portfolio/",
+  build: {
+    outDir: "docs",
+  },
   server: {
     host: "::",
     port: 8080,

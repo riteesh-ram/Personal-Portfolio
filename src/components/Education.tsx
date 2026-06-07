@@ -12,7 +12,7 @@ const educationData = [
     school: "University of Birmingham",
     location: "Birmingham, UK",
     period: "2024 - 2025",
-    gpa: "Distinction",
+    gpa: "Merit",
     description: "Completed a research-led MSc in Advanced Computer Science, specialising in cutting-edge computing technologies, AI innovation, secure software design, and Generative AI–driven software development.",
     coursework: ["AI-Driven & Smart Software Development", "Secure Software Design & Cybersecurity Practices", "Scalable & Cloud-Based Systems", "Mobile & IoT Application Development", "User Experience & Interface Design", "Enterprise Networking & Connectivity Solutions"],
     positions: [

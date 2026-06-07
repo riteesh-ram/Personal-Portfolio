@@ -98,20 +98,6 @@ const Projects = () => {
       githubUrl: "https://github.com/riteesh-ram/FarmlyGo-Android-Application"
     },
     {
-      title: "OneSpot E-commerce Platform",
-      description: "OneSpot is a cutting-edge MERN stack e-commerce platform that delivers seamless, secure, and dynamic shopping experiences. It empowers customers with real-time product browsing, cart management, and secure payments, while giving administrators full control over products, orders, and user management through a responsive, intuitive interface.",
-      technologies: ["React.js", "Redux", "Bootstrap", "Node.js", "Express.js", "Rest API", "MongoDB", "Mongoose", "JWT", "Stripe", "Emailing Services", "Postman", "Git"],
-      features: [
-        "Robust user authentication & security",
-        "Intelligent product browsing & search", 
-        "Real-time, dynamic shopping cart",
-        "Seamless Stripe payment integration",
-        "Comprehensive order management system",
-        "Powerful admin dashboard controls"
-      ],
-      githubUrl: "https://github.com/riteesh-ram/OneSpot-E-commerce-Platform"
-    },
-    {
       title: "WhatsApp Business Chatbot",
       description: "WhatsApp Business Chatbot is an AI-powered solution that automates customer support and sales via WhatsApp, leveraging NLP and machine learning to understand queries, provide instant responses, and process product orders efficiently. It ensures seamless interaction, conversation tracking, and scalable business engagement.",
       technologies: ["Python", "Flask", "TensorFlow", "Natural Language Processing", "Deep Learning", "Neural Networks", "Twilio API", "SQLite database", "Heroku Cloud", "Git"],
@@ -136,16 +122,46 @@ const Projects = () => {
       githubUrl: "https://github.com/riteesh-ram/FluShot-H1N1-Seasonal-Vaccine-Prediction"
     },
     {
-      title: "Heart Disease Prediction Project",
-      description: "A predictive machine learning platform that accurately forecasts heart disease risk using real patient data, enabling early detection, data-driven healthcare decisions, and actionable insights for medical professionals.",
-      technologies: ["Python", "Data Analysis & Visualization", "Machine Learning", "Jupyter Notebook"],
+      title: "TaskFlow - Kanban Project Management",
+      description: "TaskFlow is a real-time kanban workspace built on React and Supabase, enabling teams to collaborate seamlessly through drag-and-drop boards, presence indicators, and sub-100ms optimistic updates. It delivers Jira-style extensibility with rich cards, audit-grade tracking, and zero-trust access control, all without a custom backend.",
+      technologies: ["React 18", "TypeScript", "Vite", "Supabase", "PostgreSQL", "Tailwind CSS", "shadcn/ui", "dnd-kit", "TanStack Query", "Realtime", "Row-Level Security", "JSONB", "Vercel"],
       features: [
-        "Predicts heart disease risk accurately",
-        "Analyzes patient data patterns", 
-        "Compares multiple ML models",
-        "Visualizes insights with clarity"
+        "Real-time board collaboration with presence indicators and card lock awareness",
+        "Optimistic drag-and-drop cards and lanes with automatic rollback on failure",
+        "Audit-grade logging for every card mutation with instant user notifications",
+        "Rich cards with labels, priorities, story points, due dates, and sprint linkage",
+        "Zero-trust row-level security enforcing access across all board operations",
+        "Jira-style board settings including WIP limits, swimlanes, and quick filters"
       ],
-      githubUrl: "https://github.com/riteesh-ram/Heart-Disease-Prediction-Project"
+      githubUrl: "#"
+    },
+    {
+      title: "BudgetWise - Smart Budgeting Web App",
+      description: "BudgetWise is a full-stack personal finance application built on React and Spring Boot, empowering users to track income, expenses, and categories through visual charts and a clean, intuitive dashboard. It delivers secure JWT-based authentication, Excel report generation, and email delivery, all deployed on a production-grade containerised architecture.",
+      technologies: ["React 18", "Vite", "Tailwind CSS", "Spring Boot", "Java", "JWT", "PostgreSQL", "Docker", "Cloudinary", "Apache POI", "REST APIs", "Vercel", "Render"],
+      features: [
+        "Secure JWT authentication with BCrypt-encrypted user accounts",
+        "Track income and expenses organised by fully customisable categories",
+        "Visual pie and line charts for spending and income pattern analysis",
+        "Filter and search transactions by keyword, date range, category, and sort order",
+        "Download or email income and expense reports as Excel files",
+        "Profile management with custom avatar uploads via Cloudinary"
+      ],
+      githubUrl: "#"
+    },
+    {
+      title: "EuroComply - GDPR & EU AI Act Compliance Assistant",
+      description: "EuroComply is a production-grade RAG system for querying GDPR and EU AI Act source material in natural language, delivering fast, grounded answers for compliance, legal, and security teams. It combines hybrid semantic and keyword retrieval with Cohere reranking and Groq-powered generation, scoring every response for relevance and faithfulness.",
+      technologies: ["Python", "RAG", "ChromaDB", "Groq", "Cohere", "Streamlit", "FastAPI", "Docker", "Hugging Face Spaces", "BM25", "SentenceTransformers", "LLMs", "Generative AI"],
+      features: [
+        "Hybrid RAG combining semantic search and BM25 with Cohere reranking for precise article retrieval",
+        "Advanced multi-query RAG generating 5 parallel sub-queries for complex regulatory questions",
+        "Automatic GDPR vs EU AI Act metadata detection to filter and route queries at retrieval time",
+        "LLM-scored relevance and faithfulness evaluation displayed per response",
+        "Build-time ChromaDB ingestion ensuring zero cold-start latency on deployment",
+        "Dual LLM modes balancing response quality and token efficiency via Groq-hosted models"
+      ],
+      githubUrl: "#"
     }
   ];
 

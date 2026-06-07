@@ -5,13 +5,13 @@ import {
   FaJava, FaPython, FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaHtml5, FaCss3, FaLinux
 } from 'react-icons/fa';
 import {
-  SiJavascript, SiTypescript, SiC, SiSolidity, SiSpringboot, SiAndroidstudio,
-  SiPostgresql, SiOracle, SiMongodb, SiAmazondynamodb, SiGooglecloud, SiJenkins,
-  SiJira, SiKubernetes, SiFlask, SiSqlite, SiApachekafka, SiApachemaven, SiSonarqube,
+  SiJavascript, SiTypescript, SiC, SiSpringboot,
+  SiPostgresql, SiOracle, SiMongodb, SiGooglecloud, SiJenkins,
+  SiJira, SiKubernetes, SiFlask, SiApachekafka, SiApachemaven, SiSonarqube,
   SiGooglepubsub, SiGooglebigquery, SiApache
 } from 'react-icons/si';
 import {
-  Server, Database, CloudCog, BrainCircuit, Bot, Code2, Cpu, MessageSquare, Briefcase,
+  Server, CloudCog, BrainCircuit, Bot, Code2, Cpu, MessageSquare, Briefcase,
   Network, ShieldCheck, HardDrive, TestTube2, Recycle, BarChart3, Puzzle, Brain, BookOpen, 
   Lightbulb, Wifi, Library, Users, Activity, MousePointer
 } from 'lucide-react';
@@ -26,7 +26,6 @@ const skillCategories = [
       { name: 'TypeScript', icon: <SiTypescript className="text-blue-500" /> },
       { name: 'Python', icon: <FaPython className="text-blue-400" /> },
       { name: 'C', icon: <SiC className="text-blue-600" /> },
-      { name: 'Solidity', icon: <SiSolidity className="text-gray-400" /> },
       { name: 'HTML', icon: <FaHtml5 className="text-orange-500" /> },
       { name: 'CSS', icon: <FaCss3 className="text-blue-600" /> },
     ]
@@ -36,16 +35,13 @@ const skillCategories = [
     icon: <Server />,
     skills: [
       { name: 'Node.js', icon: <FaNodeJs className="text-green-500" /> },
-      { name: 'React Native', icon: <FaReact className="text-cyan-500" /> },
-      { name: 'React.js', icon: <FaReact className="text-cyan-400" /> },
+      { name: 'React', icon: <FaReact className="text-cyan-400" /> },
       { name: 'Spring Boot', icon: <SiSpringboot className="text-green-500" /> },
-      { name: 'Android Studio', icon: <SiAndroidstudio className="text-green-400" /> },
       { name: 'Flask', icon: <SiFlask className="text-gray-300" /> },
+      { name: 'FastAPI', icon: <SiFlask className="text-teal-400" /> },
       { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-700" /> },
       { name: 'Oracle', icon: <SiOracle className="text-red-600" /> },
-      { name: 'SQLite', icon: <SiSqlite className="text-sky-600" /> },
       { name: 'MongoDB', icon: <SiMongodb className="text-green-600" /> },
-      { name: 'DynamoDB', icon: <SiAmazondynamodb className="text-blue-500" /> },
       { name: 'BigQuery', icon: <SiGooglebigquery className="text-blue-400" /> },
     ]
   },
@@ -69,11 +65,12 @@ const skillCategories = [
     icon: <BrainCircuit />,
     skills: [
       { name: 'Generative AI', icon: <Bot className="text-purple-400" /> },
+      { name: 'Agentic AI', icon: <Brain className="text-emerald-400" /> },
+      { name: 'AI Orchestration', icon: <Network className="text-cyan-400" /> },
       { name: 'LLMs', icon: <MessageSquare className="text-cyan-400" /> },
       { name: 'NLP', icon: <Lightbulb className="text-yellow-400" /> },
       { name: 'Machine Learning', icon: <Brain className="text-pink-400" /> },
       { name: 'Deep Learning', icon: <Cpu className="text-orange-500" /> },
-      { name: 'SQL Querying', icon: <Database className="text-indigo-400" /> },
       { name: 'Data Analytics & Visualization', icon: <BarChart3 className="text-green-400" /> },
     ]
   },
