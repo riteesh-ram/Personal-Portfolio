@@ -445,17 +445,20 @@ const Projects = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1 }}
                       >
-                        <Button 
-                          variant="outline" 
-                          size="lg"
-                          className="glass-effect glow-hover border-2 border-primary/30 hover:border-primary/50 transition-all duration-300"
-                          onClick={() => window.open(projects[currentIndex].githubUrl, '_blank')}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
+                        <a
+                          href={projects[currentIndex].githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          <Github className="w-5 h-5 mr-3" />
-                          View Code
-                        </Button>
+                          <Button
+                            variant="outline"
+                            size="lg"
+                            className="glass-effect glow-hover border-2 border-primary/30 hover:border-primary/50 transition-all duration-300"
+                          >
+                            <Github className="w-5 h-5 mr-3" />
+                            View Code
+                          </Button>
+                        </a>
                       </motion.div>
                     </CardContent>
                   </Card>
