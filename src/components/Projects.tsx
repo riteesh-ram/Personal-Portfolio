@@ -30,7 +30,7 @@ const Projects = () => {
         "Build-time ChromaDB ingestion for zero cold-start latency",
         "Dual LLM modes balancing quality and token efficiency"
       ],
-      githubUrl: "#"
+      githubUrl: "https://github.com/riteesh-ram/EuroComply-GDPR-EU-AI-Act-Assistant"
     },
     {
       title: "TaskFlow - Kanban Project Management",
@@ -44,7 +44,7 @@ const Projects = () => {
         "Zero-trust row-level security across all board operations",
         "Jira-style WIP limits, swimlanes, and quick filters"
       ],
-      githubUrl: "#"
+      githubUrl: "https://github.com/riteesh-ram/TaskFlow-Kanban-Project-Management-"
     },
     {
       title: "BudgetWise - Smart Budgeting Web App",
@@ -58,7 +58,7 @@ const Projects = () => {
         "Download or email expense reports as Excel files",
         "Profile management with Cloudinary avatar uploads"
       ],
-      githubUrl: "#"
+      githubUrl: "https://github.com/riteesh-ram/Budget-Wise-Smart-Budgeting-WebApp"
     },
     {
       title: "AI-Driven Automated Test Generation System",
