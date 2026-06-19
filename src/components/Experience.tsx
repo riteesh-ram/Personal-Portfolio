@@ -17,7 +17,7 @@ import {
 
 const experiences = [
   {
-    title: "Junior Full Stack Developer",
+    title: "Full Stack Developer",
     company: "Pod Digital Marketing",
     companyUrl: "https://www.poddigital.co.uk/",
     location: "On-site, United Kingdom",
