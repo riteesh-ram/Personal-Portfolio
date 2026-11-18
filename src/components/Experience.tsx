@@ -25,72 +25,58 @@ const experiences = [
     type: "Full-time",
     description: "Pod Digital Marketing is a UK-based digital marketing agency delivering data-driven growth strategies and AI-powered solutions for businesses across diverse industries.",
     achievements: [
-      "Built a multi-platform CRM integration layer for TelephoneAI, connecting Salesforce, GoldMine, and Clinic Software while developing deep expertise in ElevenLabs voice AI.",
-      "Owned the data architecture and access control for the BusinessGPT MVP, delivering an MCP-based Microsoft Teams integration that unified emails, documents, and channels into a single application."
+      "Architected the TelephoneAI voice agent on ElevenLabs, authoring webhook tools for live Salesforce, GoldMine and clinic records with ~150 ms time-to-first-audio.",
+      "Designed BusinessGPT's initial Cloud Firestore data model (users, OAuth tokens, token usage) and integrated Microsoft 365 via Graph API to unify email, files and Teams chats."
     ],
-    technologies: ["Next.js", "FastAPI", "Python", "MCP", "AI Agents", "Microsoft Teams", "M365", "Salesforce", "ElevenLabs", "CRM Integration", "AI/ML", "REST APIs"]
+    technologies: ["Python", "ElevenLabs", "Salesforce", "Cloud Firestore", "Microsoft 365", "Graph API", "OAuth 2.0", "AI Agents", "Webhooks", "Generative AI"]
   },
   {
     title: "Software Developer",
-    company: "Little Birdie",
+    company: "Little Birdie Holdings",
     companyUrl: "https://www.littlebirdie.co.uk/",
     location: "Remote, United Kingdom",
     period: "Jul 2025 - Feb 2026",
     type: "Full-time",
     description: "Little Birdie is a UK fintech platform that helps consumers save on subscriptions and empowers businesses to boost engagement through smart payment management.",
     achievements: [
-      "Led a critical React Native upgrade to version 0.83, enabling Hermes and Fabric rendering to cut app load times by 35% and directly improve user onboarding retention.",
-      "Architected Little Birdie’s B2B web MVP using Next.js, translating the full mobile product into a scalable web platform for enterprise business clients.",
-      "Built an event-driven recommendation engine on AWS, harnessing personalised user data to drive a 20% boost in user engagement."
+      "Re-platformed React Native 0.70 to 0.83 via a greenfield port, enabling Hermes and Fabric to cut cold start from ~4.5 s to under 3 s and reduce onboarding drop-off.",
+      "Built the React.js foundation for the B2B web MVP on the mobile app's GraphQL backend, adding Companies House checks and transaction de-duplication for accurate forecasts.",
+      "Integrated a vendor recommendation engine via an event-driven AWS pipeline (DynamoDB Streams, Lambda) that pre-computes personalised offers, raising customer engagement by 20%."
     ],
-    technologies: ["React Native", "Next.js", "TypeScript", "JavaScript", "AWS Services", "Server-less Architecture", "GraphQL", "Firebase", "Agile", "AI/ML", "CI/CD", "Docker", "Kubernetes", "Attlassian Suite"]
+    technologies: ["React Native", "React.js", "TypeScript", "JavaScript", "GraphQL", "AWS", "DynamoDB", "AWS Lambda", "Event-Driven Architecture", "Frontend Development"]
   },
   {
     title: "Software Engineer",
     company: "Hughes Systique Corporation",
     companyUrl: "https://www.hsc.com/",
     location: "Bengaluru, India",
-    period: "July 2022 - Aug 2024",
+    period: "Jan 2022 - Aug 2024",
     type: "Full-time",
     description: "Contributed to Hughes Systique Corporation’s JUPITER™ System, a flagship satellite internet platform delivering high-performance, scalable connectivity solutions globally.",
     achievements: [
-      "Directed a full Oracle-to-PostgreSQL database migration, rewriting 100+ stored procedures to boost query performance by 20% and reduce licensing costs by 80%.",
-      "Rearchitected a legacy JBoss monolith into a Spring Boot and Kafka microservices ecosystem, cutting deployment overhead by 30% and building a resilient, scalable platform foundation.",
-      "Designed a centralised transaction auditing system across 7+ microservices and 3 legacy systems with BigQuery, reducing root cause resolution time by 60%.",
-      "Shipped production-grade LTE services under high-traffic conditions, applying non-blocking patterns and fault-tolerance strategies to maintain consistent platform reliability.",
-      "Mentored new joiners through technical onboarding and led code reviews that consistently raised the quality bar across the engineering team.",
-      "Championed unit and integration testing across the codebase while embedding DevSecOps practices, delivering consistently secure and stable production releases."
+      "Migrated 100+ tables from Oracle to PostgreSQL (AlloyDB), re-engineering PL/SQL procedures to speed up queries by 20% and helped cut annual database costs by ~80%.",
+      "Drove the extraction of a legacy JBoss monolith into highly available Spring Boot and Kafka event-driven services, enabling independent deployment and scaling.",
+      "Transformed a rigid prequalification workflow into a Spring Boot microservice with a rule-based provider-selection engine, unlocking multi-provider support.",
+      "Engineered Java and Spring Boot cron jobs on GCP across 10+ microservices, using database audit trails to detect and auto-retry failed transactions.",
+      "Implemented a centralised BigQuery transaction auditing framework with correlation-ID tracing, adopted by multiple teams and shortening root-cause resolution by 60%.",
+      "Mentored new hires through technical onboarding and conducted code reviews to uphold the team's engineering standards.",
+      "Ensured platform stability by rigorously executing unit and integration testing within the CI/CD pipeline, guaranteeing secure and predictable production deployments."
     ],
-    technologies: ["Java", "JavaScript", "SpringBoot", "Node.js", "Angular", "PostgreSQL", "Oracle", "MongoDB", "Google Cloud Platform", "Kafka", "Web APIs", "REST", "Jest", "Junit", "Agile", "CI/CD", "Docker", "Kubernetes", "Attlassian Suite"]
-  },
-  {
-    title: "Graduate Trainee Engineer",
-    company: "Hughes Systique Corporation",
-    companyUrl: "https://www.hsc.com/",
-    location: "Gurgaon, India",
-    period: "Jan 2022 - June 2022",
-    type: "Full-time",
-    description: "Graduated from Hughes Systique’s Trainee program, mastering SDLC, advanced technologies, and mentorship to deliver impactful software solutions.",
-    achievements: [
-      "Mastered MERN stack and CI/CD pipelines through intensive hands-on training.",
-      "Built a secure Visitor Management System with API integration to track office movements.",
-      "Developed a 7-page Node.js/React e-commerce demo, applying full SDLC for end-to-end functionality."
-    ],
-    technologies: ["MongoDB", "Express.js", "Node.js", "React", "JavaScript", "Web APIs", "REST"]
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "Oracle", "GCP", "Kafka", "BigQuery", "Microservices", "CI/CD", "JUnit", "Mockito", "Docker", "Kubernetes", "System Design", "Agile", "RESTful APIs"]
   },
   {
     title: "Summer Intern - AI & Web Development",
-    company: "Rann Lab Technologies",
+    company: "RannLabs Technologies",
     companyUrl: "https://rannlab.com/",
     location: "Noida, India",
-    period: "May 2020 - June 2020",
+    period: "May 2020 - Jul 2020",
     type: "Internship",
     description: "Rannlab Technologies delivers custom software, web/mobile apps, and AI- and Blockchain-powered solutions to drive digital transformation and business growth.",
     achievements: [
-      "Designed and delivered a WhatsApp chatbot powered by a neural network intent classifier, achieving 90% intent recognition and automating customer queries and ordering workflows.",
-      "Established a centralised database architecture for the conversational agent, providing full visibility into every customer interaction across the platform."
+      "Engineered an automated WhatsApp assistant that resolved 98% of customer requests and reduced response times by 90%, replacing manual support handling.",
+      "Designed the chat assistant's central database, unifying customer interactions for business-wide visibility."
     ],
-    technologies: ["Python", "Flask", "SQLite", "Deep Learning", "Natural Language Processing", "Machine Learning"]
+    technologies: ["Python", "Natural Language Processing", "Machine Learning", "Conversational AI", "Database Design", "SQL"]
   }
 ];
 
